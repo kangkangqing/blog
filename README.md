@@ -354,49 +354,96 @@ npm run build
 # 3. 配置nginx代理
 ```
 
-## VS Code 开发配置
+## 📖 开发规范
 
-项目包含以下VS Code配置：
-- `chat.mcp.discovery.enabled`: 启用MCP发现功能，提供AI辅助开发
-- `chat.mcp.serverSampling`: MCP服务器采样配置
-- `terminal.integrated.tabs.defaultIcon`: GitHub风格终端图标
+### 后端规范
+- **命名规范** - 驼峰命名法
+- **包结构** - 按功能分层
+- **代码注释** - 类和方法必须有注释
+- **异常处理** - 统一异常处理机制
+- **日志规范** - 使用SLF4J + Logback
 
-## 部署
+### 前端规范
+- **命名规范** - kebab-case (组件文件名)
+- **组件开发** - 单文件组件 (.vue)
+- **状态管理** - 使用Pinia管理全局状态
+- **API调用** - 统一封装Axios
+- **样式规范** - 使用SCSS，遵循BEM命名
 
-### Docker 部署
-```bash
-# 构建镜像
-docker-compose build
+## 🔄 版本控制
 
-# 启动服务
-docker-compose up -d
+### Git 工作流
+- **main** - 主分支，生产环境代码
+- **develop** - 开发分支，集成最新功能
+- **feature/** - 功能分支，开发新功能
+- **hotfix/** - 热修复分支，紧急修复
+
+### 提交规范
+```
+feat: 新功能
+fix: 修复bug
+docs: 文档更新
+style: 代码格式化
+refactor: 重构代码
+test: 测试相关
+chore: 构建工具或辅助工具的变动
 ```
 
-### 传统部署
-1. 后端打包：`mvn clean package`
-2. 前端构建：`npm run build`
-3. 部署到服务器
+## 🤝 贡献指南
 
-## API 文档
+1. **Fork 项目** 到你的 GitHub 账户
+2. **创建功能分支** (`git checkout -b feature/AmazingFeature`)
+3. **提交更改** (`git commit -m 'feat: Add some AmazingFeature'`)
+4. **推送分支** (`git push origin feature/AmazingFeature`)
+5. **创建 Pull Request**
 
-启动后端服务后，访问 Swagger UI 查看完整的API文档：
-http://localhost:8080/swagger-ui.html
+## 📋 开发计划
 
-## 贡献指南
+### v1.0.0 (基础版本)
+- [x] 项目初始化
+- [ ] 后端基础框架搭建
+- [ ] 数据库设计与创建
+- [ ] 用户认证系统
+- [ ] 博客CRUD功能
+- [ ] 前端页面开发
+- [ ] 基础部署方案
 
-1. Fork 项目
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启 Pull Request
+### v1.1.0 (功能增强)
+- [ ] 评论系统
+- [ ] 文章搜索
+- [ ] 分类管理
+- [ ] 文件上传
+- [ ] 数据统计
 
-## 许可证
+### v1.2.0 (性能优化)
+- [ ] Redis缓存优化
+- [ ] 数据库性能优化
+- [ ] 前端性能优化
+- [ ] Docker容器化
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+## 📞 联系方式
 
-## 联系方式
+如有问题或建议，请通过以下方式联系：
 
-如有问题或建议，请提交 Issue 或通过以下方式联系：
+- **GitHub Issues**: [提交Issue](https://github.com/kangkangqing/blog/issues)
+- **GitHub Discussions**: [参与讨论](https://github.com/kangkangqing/blog/discussions)
+- **作者邮箱**: sunhao@stu.cqie.edu.cn
+- **GitHub**: [@kangkangqing](https://github.com/kangkangqing)
 
-- GitHub: [@kangkangqing](https://github.com/kangkangqing)
-- Email: sunhao@stu.cqie.edu.cn
+## 📄 许可证
+
+本项目采用 [MIT License](LICENSE) 开源许可证。
+
+## 🙏 致谢
+
+感谢以下开源项目：
+
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [MyBatis-Plus](https://mp.baomidou.com/)
+- [Vue.js](https://vuejs.org/)
+- [Element Plus](https://element-plus.org/)
+- [Pinia](https://pinia.vuejs.org/)
+
+---
+
+⭐ 如果这个项目对你有帮助，请给一个 Star 支持一下！
