@@ -1,0 +1,155 @@
+# Spring Boot 配置
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# 数据源配置
+spring:
+  application:
+    name: blog-backend
+  
+  # 解决 Knife4j 与 Spring Boot 2.6+ 兼容性问题
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    
+    # HikariCP 连接池配置
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 300000
+      connection-timeout: 20000
+      max-lifetime: 1200000
+      pool-name: BlogHikariCP
+  
+  # Redis 配置
+  redis:
+    host: localhost
+    port: 6379
+    password: 
+    database: 0
+    timeout: 10000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+
+  # JSON 配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+
+# MyBatis Plus 配置
+mybatis-plus:
+  configuration:
+    # 开启驼峰命名转换
+    map-underscore-to-camel-case: true
+    # 开启缓存
+    cache-enabled: true
+    # 设置日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  
+  # 实体类扫描包
+  type-aliases-package: com.blog.entity
+  
+  # Mapper XML 文件位置
+  mapper-locations: classpath*:mapper/*.xml
+  
+  # 全局配置
+  global-config:
+    db-config:
+      # 主键类型
+      id-type: ASSIGN_ID
+      # 逻辑删除字段
+      logic-delete-field: deleted
+      # 逻辑删除值
+      logic-delete-value: 1
+      # 逻辑未删除值
+      logic-not-delete-value: 0
+      # 字段填充策略
+      insert-strategy: NOT_NULL
+      update-strategy: NOT_NULL
+      where-strategy: NOT_NULL
+
+# Sa-Token 配置
+sa-token:
+  # token 名称
+  token-name: Authorization
+  # token 有效期，单位秒，-1 代表永不过期
+  timeout: 86400
+  # token 临时有效期 (指定时间内无操作就视为token过期)，单位秒
+  # 是否允许同一账号并发登录
+  is-concurrent: true
+  # 在多人登录同一账号时，是否共用一个 token
+  is-share: false
+  # token 风格
+  token-style: uuid
+  # 是否输出操作日志
+  is-log: false
+  # 是否从 cookie 中读取 token
+  is-read-cookie: false
+  # 是否从 header 中读取 token
+  is-read-header: true
+  # token 前缀
+  token-prefix: Bearer
+  active-timeout: 1800
+
+# 日志配置
+logging:
+  level:
+    com.blog: debug
+    com.blog.mapper: debug
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+
+# SpringDoc OpenAPI 3 配置
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+    display-request-duration: true
+    show-extensions: true
+    show-common-extensions: true
+    doc-expansion: none
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.blog.controller
+
+# 自定义配置
+blog:
+  # 文件上传配置
+  upload:
+    # 文件存储路径
+    path: /opt/blog/upload/
+    # 文件访问前缀
+    prefix: /upload/
+    # 允许上传的文件类型
+    allowed-types: jpg,jpeg,png,gif,webp,svg
+    # 文件大小限制 (MB)
+    max-size: 10
+  
+  # 博客配置
+  config:
+    # 默认每页显示数量
+    page-size: 10
+    # 评论是否需要审核
+    comment-audit: false
+    # 是否允许游客评论
+    allow-guest-comment: true

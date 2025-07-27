@@ -201,3 +201,4 @@ application-prod.properties
 application-production.properties
 
 .idea
+.vscode

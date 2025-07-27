@@ -1,42 +1,64 @@
-# 个人博客系统 (Personal Blog System)
+# 🚀 个人博客系统 (Personal Blog System)
+
+[![Java](https://img.shields.io/badge/Java-8-orange)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.15-brightgreen)](https://spring.io/projects/spring-boot)
+[![Vue](https://img.shields.io/badge/Vue-3.3.8-4fc08d)](https://vuejs.org/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)](https://www.mysql.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
 
 ## 📋 项目概述
 
-这是一个基于 **Spring Boot + Vue3** 的前后端分离个人博客系统，采用现代化技术栈构建，支持文章发布、分类管理、评论互动等核心功能，适合个人开发者快速搭建专业的博客网站。
+这是一个基于 **Spring Boot + Vue3** 的现代化前后端分离个人博客系统，采用最新技术栈构建，具有完整的博客功能和管理后台。项目遵循RESTful API设计规范，支持响应式布局，适合个人开发者快速搭建专业的博客网站。
+
+### ✨ 核心特性
+
+- 🎨 **现代化UI设计** - 基于Element Plus的响应式界面
+- � **安全认证** - Sa-Token + JWT 双重安全保障
+- 📚 **完整文档** - SpringDoc OpenAPI 3.0 自动生成API文档
+- 🚀 **高性能** - Redis缓存 + MyBatis-Plus优化
+- 📱 **移动适配** - 完美支持移动端访问
+- �🛠️ **易部署** - Docker容器化部署支持
 
 ## 🛠️ 技术栈
 
 ### 后端技术栈
-- **JDK 8** - Java开发环境
-- **Spring Boot 2.7.x** - 主框架 (兼容JDK8)
-- **MyBatis** - ORM框架
-- **MyBatis-Plus** - MyBatis增强工具
-- **MySQL 8.0** - 主数据库
-- **Redis** - 缓存数据库
-- **Spring Security + JWT** - 安全认证
-- **Swagger** - API文档
-- **Maven** - 项目构建工具
+| 技术 | 版本 | 说明 |
+|------|------|------|
+| **Java** | 1.8 | 开发语言 |
+| **Spring Boot** | 2.7.15 | 主框架 |
+| **MyBatis-Plus** | 3.5.3.2 | ORM框架增强 |
+| **MySQL** | 8.0.33 | 主数据库 |
+| **Redis** | Latest | 缓存数据库 |
+| **Sa-Token** | 1.37.0 | 权限认证框架 |
+| **SpringDoc OpenAPI** | 1.7.0 | API文档生成 |
+| **FastJSON** | 2.0.40 | JSON处理 |
+| **Hutool** | 5.8.21 | Java工具库 |
 
 ### 前端技术栈
-- **Vue 3** - 前端框架
-- **Element Plus** - UI组件库
-- **Pinia** - 状态管理
-- **Vue Router** - 路由管理
-- **Axios** - HTTP客户端
-- **Vite** - 构建工具
+| 技术 | 版本 | 说明 |
+|------|------|------|
+| **Vue 3** | 3.3.8 | 前端框架 |
+| **TypeScript** | 5.2.0 | 开发语言 |
+| **Element Plus** | 2.4.4 | UI组件库 |
+| **Pinia** | 2.1.7 | 状态管理 |
+| **Vue Router** | 4.2.5 | 路由管理 |
+| **Axios** | 1.6.2 | HTTP客户端 |
+| **Vite** | 5.0.0 | 构建工具 |
+| **ECharts** | 5.4.3 | 数据可视化 |
 
 ### 开发工具
-- **VS Code** - 代码编辑器 (配置MCP)
+- **VS Code** - 推荐代码编辑器
 - **Git** - 版本控制
-- **Docker** - 容器化部署 (可选)
+- **Maven** - 项目构建
+- **Docker** - 容器化部署
 
 ## 🏗️ 系统架构
 
 ```
 ┌─────────────────┐    HTTP/HTTPS    ┌─────────────────┐
 │   Vue3 前端     │ ────────────────► │  Spring Boot    │
-│   (端口:3000)   │                   │   后端服务      │
-│                 │                   │  (端口:8080)    │
+│  Element Plus   │                   │   Sa-Token      │
+│   (端口:5173)   │                   │  (端口:8080)    │
 └─────────────────┘                   └─────────────────┘
                                              │
                                              ▼
@@ -52,247 +74,412 @@
                                       └─────────────────┘
 ```
 
-## 📁 项目结构
+## 📊 业务功能
 
+### 🎯 核心业务模块
+
+#### 👤 用户管理
+- ✅ 用户注册/登录
+- ✅ 个人信息管理
+- ✅ 密码修改
+- ✅ 头像上传
+- ✅ 权限控制
+
+#### 📝 博客管理
+- ✅ 文章发布/编辑
+- ✅ 文章分类管理
+- ✅ 标签管理
+- ✅ 文章搜索
+- ✅ 文章统计
+- ✅ 封面图片上传
+
+#### 💬 评论系统
+- ✅ 文章评论
+- ✅ 评论回复
+- ✅ 评论管理
+- ✅ 评论审核
+
+#### 🎨 前台功能
+- ✅ 博客首页展示
+- ✅ 文章详情页
+- ✅ 分类/标签页面
+- ✅ 时间轴展示
+- ✅ 关于页面
+- ✅ 搜索功能
+
+#### 🔧 后台管理
+- ✅ 仪表盘统计
+- ✅ 文章管理
+- ✅ 分类管理
+- ✅ 标签管理
+- ✅ 用户管理
+- ✅ 评论管理
+- ✅ 系统设置
+
+### 🔐 权限设计
+- **Sa-Token认证** - 轻量级权限认证框架
+- **JWT Token** - 无状态认证
+- **Redis存储** - Token缓存管理
+- **路由守卫** - 前端权限控制
+
+## 🚀 快速开始
+
+### 📋 环境要求
+- **JDK 8+**
+- **Node.js 16+**
+- **MySQL 8.0+**
+- **Redis 6.0+**
+- **Maven 3.6+**
+
+### 🔧 后端启动
+
+1. **克隆项目**
+```bash
+git clone https://github.com/kangkangqing/blog.git
+cd blog
+```
+
+2. **配置数据库**
+```sql
+-- 创建数据库
+CREATE DATABASE blog CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+```
+
+3. **修改配置**
+```yaml
+# backend/src/main/resources/application.yml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=Asia/Shanghai
+    username: your_username
+    password: your_password
+  redis:
+    host: localhost
+    port: 6379
+    password: your_redis_password
+```
+
+4. **启动后端**
+```bash
+cd backend
+mvn clean package -DskipTests
+java -jar target/blog-backend-1.0.0.jar
+```
+
+### 🎨 前端启动
+
+1. **安装依赖**
+```bash
+cd frontend
+npm install
+```
+
+2. **启动开发服务器**
+```bash
+npm run dev
+```
+
+3. **构建生产版本**
+```bash
+npm run build
+```
+
+### 🌐 访问地址
+- **前台首页**: http://localhost:5173
+- **管理后台**: http://localhost:5173/admin
+- **API文档**: http://localhost:8080/swagger-ui.html
+
+## 📚 API文档
+
+本项目使用 **SpringDoc OpenAPI 3** 自动生成API文档，支持在线测试：
+
+- **Swagger UI**: `http://localhost:8080/swagger-ui.html`
+- **OpenAPI JSON**: `http://localhost:8080/v3/api-docs`
+
+### 🔑 认证方式
+API使用Bearer Token认证，请在请求头中添加：
+```
+Authorization: Bearer {your_token}
+```
+
+## 📁 项目结构
 ```
 blog/
 ├── backend/                          # Spring Boot 后端
 │   ├── src/main/java/com/blog/
 │   │   ├── BlogApplication.java      # 启动类
 │   │   ├── config/                   # 配置类
-│   │   │   ├── SecurityConfig.java   # 安全配置
-│   │   │   ├── RedisConfig.java      # Redis配置
-│   │   │   ├── MyBatisPlusConfig.java# MyBatis-Plus配置
-│   │   │   └── SwaggerConfig.java    # Swagger配置
+│   │   │   └── OpenApiConfig.java    # SpringDoc配置
 │   │   ├── controller/               # 控制器层
 │   │   │   ├── BlogController.java   # 博客控制器
 │   │   │   ├── UserController.java   # 用户控制器
 │   │   │   ├── CategoryController.java# 分类控制器
-│   │   │   └── CommentController.java # 评论控制器
-│   │   ├── service/                  # 服务层
-│   │   │   ├── BlogService.java      # 博客服务
-│   │   │   ├── UserService.java      # 用户服务
-│   │   │   ├── CategoryService.java  # 分类服务
-│   │   │   └── CommentService.java   # 评论服务
-│   │   ├── mapper/                   # 数据访问层
-│   │   │   ├── BlogMapper.java       # 博客Mapper
-│   │   │   ├── UserMapper.java       # 用户Mapper
-│   │   │   ├── CategoryMapper.java   # 分类Mapper
-│   │   │   └── CommentMapper.java    # 评论Mapper
+│   │   │   └── TestController.java   # 测试控制器
 │   │   ├── entity/                   # 实体类
-│   │   │   ├── Blog.java            # 博客实体
-│   │   │   ├── User.java            # 用户实体
-│   │   │   ├── Category.java        # 分类实体
-│   │   │   └── Comment.java         # 评论实体
-│   │   ├── dto/                     # 数据传输对象
-│   │   ├── vo/                      # 视图对象
-│   │   ├── utils/                   # 工具类
-│   │   │   ├── JwtUtils.java        # JWT工具
-│   │   │   ├── RedisUtils.java      # Redis工具
-│   │   │   └── MD5Utils.java        # 加密工具
-│   │   └── common/                  # 公共类
-│   │       ├── Result.java          # 统一返回结果
-│   │       └── Constants.java       # 常量类
+│   │   ├── mapper/                   # 数据访问层
+│   │   └── common/                   # 公共类
 │   ├── src/main/resources/
 │   │   ├── application.yml          # 主配置文件
-│   │   ├── application-dev.yml      # 开发环境配置
-│   │   ├── application-prod.yml     # 生产环境配置
 │   │   └── mapper/                  # MyBatis XML文件
 │   └── pom.xml                      # Maven配置
 │
 ├── frontend/                        # Vue3 前端
 │   ├── src/
-│   │   ├── components/              # 公共组件
+│   │   ├── layout/                  # 布局组件
+│   │   │   ├── index.vue            # 主布局
 │   │   │   ├── Header.vue           # 头部组件
-│   │   │   ├── Footer.vue           # 底部组件
-│   │   │   ├── Sidebar.vue          # 侧边栏组件
-│   │   │   └── BlogCard.vue         # 博客卡片组件
+│   │   │   └── Footer.vue           # 底部组件
 │   │   ├── views/                   # 页面组件
 │   │   │   ├── Home.vue             # 首页
-│   │   │   ├── BlogList.vue         # 博客列表
 │   │   │   ├── BlogDetail.vue       # 博客详情
 │   │   │   ├── Category.vue         # 分类页面
-│   │   │   ├── Login.vue            # 登录页面
-│   │   │   └── Admin/               # 管理后台
+│   │   │   ├── About.vue            # 关于页面
+│   │   │   ├── Timeline.vue         # 时间轴
+│   │   │   └── Login.vue            # 登录页面
+│   │   ├── admin/                   # 管理后台
+│   │   │   ├── layout/index.vue     # 后台布局
+│   │   │   └── views/               # 后台页面
 │   │   │       ├── Dashboard.vue    # 仪表盘
-│   │   │       ├── BlogManage.vue   # 博客管理
-│   │   │       ├── CategoryManage.vue# 分类管理
-│   │   │       └── CommentManage.vue # 评论管理
+│   │   │       ├── Blog.vue         # 博客管理
+│   │   │       ├── Category.vue     # 分类管理
+│   │   │       ├── Tag.vue          # 标签管理
+│   │   │       ├── User.vue         # 用户管理
+│   │   │       ├── Comment.vue      # 评论管理
+│   │   │       └── System.vue       # 系统设置
 │   │   ├── router/                  # 路由配置
-│   │   │   └── index.js             # 路由定义
-│   │   ├── stores/                  # Pinia状态管理
-│   │   │   ├── user.js              # 用户状态
-│   │   │   ├── blog.js              # 博客状态
-│   │   │   └── category.js          # 分类状态
-│   │   ├── api/                     # API接口
-│   │   │   ├── blog.js              # 博客API
-│   │   │   ├── user.js              # 用户API
-│   │   │   ├── category.js          # 分类API
-│   │   │   └── comment.js           # 评论API
-│   │   ├── utils/                   # 工具函数
-│   │   │   ├── request.js           # Axios封装
-│   │   │   ├── auth.js              # 认证工具
-│   │   │   └── date.js              # 日期工具
-│   │   ├── assets/                  # 静态资源
 │   │   ├── styles/                  # 样式文件
-│   │   ├── App.vue                  # 根组件
-│   │   └── main.js                  # 入口文件
+│   │   └── main.ts                  # 入口文件
 │   ├── package.json                 # npm配置
-│   ├── vite.config.js              # Vite配置
-│   └── index.html                   # HTML模板
+│   └── vite.config.ts              # Vite配置
 │
 ├── docs/                           # 项目文档
-│   ├── api.md                      # API文档
-│   ├── database.sql                # 数据库脚本
-│   └── deploy.md                   # 部署文档
-├── .vscode/                        # VS Code配置
 ├── .gitignore                      # Git忽略文件
 └── README.md                       # 项目说明
 ```
 
+## 🎯 核心功能模块
 
-## 🚀 核心功能模块
+### 👤 用户管理模块
+- **用户注册/登录** - Sa-Token + JWT认证
+- **个人信息管理** - 昵称、邮箱、头像修改
+- **权限控制** - 基于角色的访问控制
 
-### 用户端功能
-- **首页展示** - 最新文章、热门文章、分类导航
-- **文章浏览** - 文章列表、详情页、分页查询
-- **分类筛选** - 按分类查看文章
-- **文章搜索** - 关键词搜索文章内容
-- **评论互动** - 文章评论、回复评论
-- **用户注册/登录** - JWT身份认证
+### 📝 内容管理模块
+- **文章管理** - 发布、编辑、删除、草稿保存
+- **分类管理** - 文章分类组织
+- **标签管理** - 文章标签标记
+- **富文本编辑** - Markdown支持
 
-### 管理端功能
-- **后台仪表盘** - 数据统计、图表展示
-- **文章管理** - 文章发布、编辑、删除、草稿
-- **分类管理** - 分类增删改查
-- **评论管理** - 评论审核、删除
-- **用户管理** - 用户信息管理
-- **系统设置** - 站点配置、个人信息
+### 💬 互动模块
+- **评论系统** - 文章评论与回复
+- **点赞功能** - 文章点赞统计
+- **浏览统计** - 文章访问量统计
+
+### 🎨 前台展示
+- **响应式首页** - 文章列表、分类导航
+- **文章详情页** - Markdown渲染、评论展示
+- **分类页面** - 按分类查看文章
+- **时间轴** - 文章发布时间线
+- **搜索功能** - 全文搜索
+
+### 🔧 后台管理
+- **数据仪表盘** - 文章、用户、评论统计
+- **内容管理** - 文章、分类、标签管理
+- **用户管理** - 用户信息、权限管理
+- **系统设置** - 站点配置
 
 ## 🗄️ 数据库设计
 
 ### 主要数据表
 
-#### 用户表 (t_user)
-| 字段名 | 类型 | 说明 | 备注 |
-|--------|------|------|------|
-| id | bigint | 主键ID | 自增 |
-| username | varchar(50) | 用户名 | 唯一 |
-| password | varchar(100) | 密码 | MD5加密 |
-| email | varchar(100) | 邮箱 | 唯一 |
-| nickname | varchar(50) | 昵称 | |
-| avatar | varchar(200) | 头像URL | |
-| status | tinyint | 状态 | 0禁用 1启用 |
-| create_time | datetime | 创建时间 | |
-| update_time | datetime | 更新时间 | |
-
-#### 博客表 (t_blog)
-| 字段名 | 类型 | 说明 | 备注 |
-|--------|------|------|------|
-| id | bigint | 主键ID | 自增 |
-| title | varchar(200) | 文章标题 | |
-| content | longtext | 文章内容 | Markdown格式 |
-| summary | varchar(500) | 文章摘要 | |
-| cover_image | varchar(200) | 封面图片 | |
-| category_id | bigint | 分类ID | 外键 |
-| user_id | bigint | 作者ID | 外键 |
-| view_count | int | 浏览次数 | 默认0 |
-| like_count | int | 点赞次数 | 默认0 |
-| status | tinyint | 状态 | 0草稿 1发布 |
-| create_time | datetime | 创建时间 | |
-| update_time | datetime | 更新时间 | |
-
-#### 分类表 (t_category)
-| 字段名 | 类型 | 说明 | 备注 |
-|--------|------|------|------|
-| id | bigint | 主键ID | 自增 |
-| name | varchar(50) | 分类名称 | 唯一 |
-| description | varchar(200) | 分类描述 | |
-| sort | int | 排序 | 升序 |
-| status | tinyint | 状态 | 0禁用 1启用 |
-| create_time | datetime | 创建时间 | |
-| update_time | datetime | 更新时间 | |
-
-#### 评论表 (t_comment)
-| 字段名 | 类型 | 说明 | 备注 |
-|--------|------|------|------|
-| id | bigint | 主键ID | 自增 |
-| blog_id | bigint | 博客ID | 外键 |
-| parent_id | bigint | 父评论ID | 0为顶级评论 |
-| user_id | bigint | 评论用户ID | 外键 |
-| content | text | 评论内容 | |
-| status | tinyint | 状态 | 0待审核 1已审核 |
-| create_time | datetime | 创建时间 | |
-
-## 🔧 环境要求
-
-### 开发环境
-- **JDK 8** 或更高版本
-- **Maven 3.6+** 
-- **MySQL 8.0+**
-- **Redis 5.0+**
-- **Node.js 16+**
-- **npm 或 yarn**
-
-### 推荐开发工具
-- **IntelliJ IDEA** (后端开发)
-- **VS Code** (前端开发)
-- **Navicat** (数据库管理)
-- **Another Redis Desktop Manager** (Redis管理)
-
-## 🏃‍♂️ 快速开始
-
-### 1. 环境准备
-
-```bash
-# 克隆项目
-git clone https://github.com/kangkangqing/blog.git
-cd blog
-
-# 创建数据库
-mysql -u root -p
-CREATE DATABASE blog_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-# 导入数据库脚本
-mysql -u root -p blog_db < docs/database.sql
+#### 博客表 (blog)
+```sql
+CREATE TABLE `blog` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` varchar(200) NOT NULL COMMENT '标题',
+  `content` longtext COMMENT '内容',
+  `summary` varchar(500) COMMENT '摘要',
+  `cover_image` varchar(200) COMMENT '封面图',
+  `category_id` bigint COMMENT '分类ID',
+  `view_count` int DEFAULT '0' COMMENT '浏览次数',
+  `like_count` int DEFAULT '0' COMMENT '点赞次数',
+  `status` tinyint DEFAULT '1' COMMENT '状态：0草稿 1发布',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='博客表';
 ```
 
-### 2. 后端启动
+#### 分类表 (category)
+```sql
+CREATE TABLE `category` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` varchar(50) NOT NULL COMMENT '分类名称',
+  `description` varchar(200) COMMENT '分类描述',
+  `sort` int DEFAULT '0' COMMENT '排序',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='分类表';
+```
 
+#### 用户表 (user)
+```sql
+CREATE TABLE `user` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `username` varchar(50) NOT NULL COMMENT '用户名',
+  `password` varchar(100) NOT NULL COMMENT '密码',
+  `email` varchar(100) COMMENT '邮箱',
+  `nickname` varchar(50) COMMENT '昵称',
+  `avatar` varchar(200) COMMENT '头像',
+  `status` tinyint DEFAULT '1' COMMENT '状态：0禁用 1启用',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+```
+
+## � API 接口
+
+### 博客相关接口
+- `GET /api/blog/list` - 获取博客列表
+- `GET /api/blog/{id}` - 获取博客详情
+- `POST /api/blog` - 创建博客
+- `PUT /api/blog/{id}` - 更新博客
+- `DELETE /api/blog/{id}` - 删除博客
+
+### 分类相关接口
+- `GET /api/category/list` - 获取分类列表
+- `POST /api/category` - 创建分类
+- `PUT /api/category/{id}` - 更新分类
+- `DELETE /api/category/{id}` - 删除分类
+
+### 用户相关接口
+- `POST /api/user/login` - 用户登录
+- `POST /api/user/register` - 用户注册
+- `GET /api/user/info` - 获取用户信息
+- `PUT /api/user/info` - 更新用户信息
+
+## 🚀 部署指南
+
+### Docker 部署（推荐）
+
+1. **构建镜像**
 ```bash
+# 后端镜像
 cd backend
+docker build -t blog-backend .
 
-# 修改配置文件 src/main/resources/application-dev.yml
-# 配置数据库连接信息和Redis连接信息
-
-# 启动后端服务
-mvn spring-boot:run
-
-# 或者使用IDE启动 BlogApplication.java
-```
-
-### 3. 前端启动
-
-```bash
+# 前端镜像
 cd frontend
-
-# 安装依赖
-npm install
-
-# 启动开发服务器
-npm run dev
+docker build -t blog-frontend .
 ```
 
-### 4. 访问应用
+2. **使用 Docker Compose**
+```yaml
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: blog
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
 
-- **前端地址**: http://localhost:3000
-- **后端API**: http://localhost:8080
-- **API文档**: http://localhost:8080/swagger-ui/index.html
-- **管理后台**: http://localhost:3000/admin
+  redis:
+    image: redis:6.2-alpine
+    ports:
+      - "6379:6379"
 
-## 📡 API 接口设计
+  backend:
+    image: blog-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - redis
 
-### 用户相关
+  frontend:
+    image: blog-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
+```
+
+### 传统部署
+
+1. **后端部署**
+```bash
+# 打包
+mvn clean package -DskipTests
+
+# 运行
+java -jar target/blog-backend-1.0.0.jar
+```
+
+2. **前端部署**
+```bash
+# 构建
+npm run build
+
+# 部署到nginx
+cp -r dist/* /var/www/html/
+```
+
+## 🎨 界面预览
+
+### 前台界面
+- **首页** - 简洁的博客列表展示
+- **文章详情** - 优雅的阅读体验
+- **分类页** - 清晰的分类导航
+- **关于页** - 个人信息展示
+
+### 后台界面  
+- **仪表盘** - 数据统计可视化
+- **内容管理** - 便捷的管理界面
+- **用户管理** - 完善的权限控制
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request 来改进这个项目！
+
+1. Fork 此仓库
+2. 创建您的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交您的更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 打开一个 Pull Request
+
+## 📄 开源协议
+
+本项目基于 [MIT License](https://opensource.org/licenses/MIT) 开源协议。
+
+## 📞 联系方式
+
+- **作者**: kangkangqing
+- **邮箱**: sunhao@stu.cqie.edu.cn
+- **GitHub**: https://github.com/kangkangqing/blog
+
+## 🙏 致谢
+
+感谢以下开源项目：
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [Vue.js](https://vuejs.org/)
+- [Element Plus](https://element-plus.org/)
+- [MyBatis-Plus](https://baomidou.com/)
+- [Sa-Token](https://sa-token.cc/)
+
+---
+
+⭐ 如果这个项目对您有帮助，请给个星星支持一下！
 - `POST /api/auth/login` - 用户登录
 - `POST /api/auth/register` - 用户注册
 - `GET /api/user/info` - 获取用户信息
