@@ -28,19 +28,19 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: '/archive',
+        name: 'Archive',
+        component: () => import('@/views/Timeline.vue'),
+        meta: {
+          title: '归档'
+        }
+      },
+      {
         path: '/tag',
         name: 'Tag',
         component: () => import('@/views/Tag.vue'),
         meta: {
           title: '标签'
-        }
-      },
-      {
-        path: '/timeline',
-        name: 'Timeline',
-        component: () => import('@/views/Timeline.vue'),
-        meta: {
-          title: '时间线'
         }
       },
       {
@@ -77,80 +77,7 @@ const routes: RouteRecordRaw[] = [
       }
     ]
   },
-  {
-    path: '/admin',
-    name: 'Admin',
-    component: () => import('@/admin/layout/index.vue'),
-    redirect: '/admin/dashboard',
-    meta: {
-      requireAuth: true
-    },
-    children: [
-      {
-        path: '/admin/dashboard',
-        name: 'Dashboard',
-        component: () => import('@/admin/views/Dashboard.vue'),
-        meta: {
-          title: '仪表盘',
-          requireAuth: true
-        }
-      },
-      {
-        path: '/admin/blog',
-        name: 'AdminBlog',
-        component: () => import('@/admin/views/Blog.vue'),
-        meta: {
-          title: '博客管理',
-          requireAuth: true
-        }
-      },
-      {
-        path: '/admin/category',
-        name: 'AdminCategory',
-        component: () => import('@/admin/views/Category.vue'),
-        meta: {
-          title: '分类管理',
-          requireAuth: true
-        }
-      },
-      {
-        path: '/admin/tag',
-        name: 'AdminTag',
-        component: () => import('@/admin/views/Tag.vue'),
-        meta: {
-          title: '标签管理',
-          requireAuth: true
-        }
-      },
-      {
-        path: '/admin/user',
-        name: 'AdminUser',
-        component: () => import('@/admin/views/User.vue'),
-        meta: {
-          title: '用户管理',
-          requireAuth: true
-        }
-      },
-      {
-        path: '/admin/comment',
-        name: 'AdminComment',
-        component: () => import('@/admin/views/Comment.vue'),
-        meta: {
-          title: '评论管理',
-          requireAuth: true
-        }
-      },
-      {
-        path: '/admin/system',
-        name: 'AdminSystem',
-        component: () => import('@/admin/views/System.vue'),
-        meta: {
-          title: '系统设置',
-          requireAuth: true
-        }
-      }
-    ]
-  },
+  // 登录页面
   {
     path: '/login',
     name: 'Login',
@@ -159,6 +86,37 @@ const routes: RouteRecordRaw[] = [
       title: '登录'
     }
   },
+  // 测试页面
+  {
+    path: '/test',
+    name: 'Test',
+    component: () => import('@/views/Test.vue'),
+    meta: {
+      title: '测试页面'
+    }
+  },
+  // 管理后台
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('@/views/admin/Layout.vue'),
+    redirect: '/admin/dashboard',
+    meta: {
+      requireAuth: true
+    },
+    children: [
+      {
+        path: '/admin/dashboard',
+        name: 'AdminDashboard',
+        component: () => import('@/views/admin/Dashboard.vue'),
+        meta: {
+          title: '仪表盘',
+          requireAuth: true
+        }
+      }
+    ]
+  },
+  // 404页面
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
@@ -169,24 +127,29 @@ const routes: RouteRecordRaw[] = [
   }
 ]
 
-// 创建路由实例
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+    return { top: 0 }
+  }
 })
 
-// 全局前置守卫
-router.beforeEach((to, from, next) => {
+// 路由守卫
+router.beforeEach(async (to, from, next) => {
   NProgress.start()
   
   // 设置页面标题
-  if (to.meta?.title) {
-    document.title = `${to.meta.title} - 个人博客系统`
+  if (to.meta.title) {
+    document.title = `${to.meta.title} - 博客系统`
   }
   
-  // 权限验证
-  if (to.meta?.requireAuth) {
-    const token = localStorage.getItem('token')
+  // 检查登录状态
+  if (to.meta.requireAuth) {
+    const token = localStorage.getItem('admin_token')
     if (!token) {
       ElMessage.warning('请先登录')
       next('/login')
@@ -197,7 +160,6 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-// 全局后置钩子
 router.afterEach(() => {
   NProgress.done()
 })

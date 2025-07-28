@@ -50,6 +50,18 @@ spring:
     time-zone: GMT+8
     default-property-inclusion: NON_NULL
 
+  # 文件上传配置
+  servlet:
+    multipart:
+      # 单个文件大小限制
+      max-file-size: 10MB
+      # 总文件大小限制
+      max-request-size: 50MB
+      # 文件写入磁盘的阈值
+      file-size-threshold: 2KB
+      # 临时文件存储位置
+      location: /tmp
+
 # MyBatis Plus 配置
 mybatis-plus:
   configuration:
@@ -134,14 +146,29 @@ springdoc:
 
 # 自定义配置
 blog:
+  # MinIO对象存储配置
+  minio:
+    # MinIO服务地址
+    endpoint: http://localhost:9000
+    # 访问密钥
+    access-key: kangkangqing
+    # 秘密密钥
+    secret-key: kangkangqing
+    # 存储桶名称
+    bucket-name: blog
+    # 文件访问前缀
+    url-prefix: http://localhost:9000/blog/
+    # 文件过期时间（秒）默认7天
+    expires: 604800
+  
   # 文件上传配置
   upload:
-    # 文件存储路径
+    # 文件存储路径 (本地存储备用)
     path: /opt/blog/upload/
     # 文件访问前缀
     prefix: /upload/
     # 允许上传的文件类型
-    allowed-types: jpg,jpeg,png,gif,webp,svg
+    allowed-types: jpg,jpeg,png,gif,webp,svg,bmp,pdf,doc,docx,txt
     # 文件大小限制 (MB)
     max-size: 10
   

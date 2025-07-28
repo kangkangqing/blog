@@ -29,6 +29,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <hutool.version>5.8.21</hutool.version>
         <sa-token.version>1.37.0</sa-token.version>
+        <minio.version>8.5.6</minio.version>
     </properties>
     
     <dependencies>
@@ -117,6 +118,20 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+        
+        <!-- 验证码生成工具 -->
+        <dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        
+        <!-- MinIO对象存储 -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>${minio.version}</version>
         </dependency>
         
         <!-- Lombok -->

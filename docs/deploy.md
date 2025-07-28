@@ -1,45 +1,52 @@
-# 部署文档
+# 🚀 博客系统部署指南
 
-## 环境要求
+## 📋 环境要求
 
 ### 开发环境
-- JDK 8+
-- Maven 3.6+
-- MySQL 8.0+
-- Redis 5.0+
-- Node.js 16+
+- **JDK**: 1.8+ (推荐 OpenJDK 8 或 Oracle JDK 8)
+- **Maven**: 3.6+ (用于后端项目构建)
+- **MySQL**: 8.0+ (数据库)
+- **Redis**: 5.0+ (缓存服务)
+- **Node.js**: 16+ (前端开发和构建)
 
 ### 生产环境
-- Linux服务器 (推荐 Ubuntu 20.04 或 CentOS 7+)
-- 2核4G内存 (最低配置)
-- 20GB磁盘空间
+- **服务器**: Linux服务器 (推荐 Ubuntu 20.04 或 CentOS 7+)
+- **硬件配置**: 2核4G内存 (最低配置)，推荐4核8G
+- **存储空间**: 20GB磁盘空间
+- **网络**: 公网IP地址，开放80、443端口
 
-## 部署方式
+## 🐳 部署方式
 
-### 方式一：Docker Compose 部署 (推荐)
+### 方式一：Docker Compose 部署 (强烈推荐)
 
-#### 1. 创建 docker-compose.yml
+这是最简单、最可靠的部署方式，适合生产环境。
+
+#### 1. 准备 docker-compose.yml
 
 ```yaml
 version: '3.8'
 
 services:
+  # MySQL 数据库
   mysql:
     image: mysql:8.0
     container_name: blog-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root123456
-      MYSQL_DATABASE: blog_db
+      MYSQL_ROOT_PASSWORD: your_root_password
+      MYSQL_DATABASE: blog
       MYSQL_USER: blog_user
-      MYSQL_PASSWORD: blog123456
+      MYSQL_PASSWORD: your_blog_password
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./docs/database.sql:/docker-entrypoint-initdb.d/init.sql
     command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - blog-network
 
+  # Redis 缓存
   redis:
     image: redis:6.2-alpine
     container_name: blog-redis
@@ -48,6 +55,8 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+    networks:
+      - blog-network
     command: redis-server --appendonly yes
 
   backend:

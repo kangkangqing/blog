@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 用户实体类
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("t_user")
+@TableName("user")
 public class User {
 
     /**
@@ -92,8 +93,14 @@ public class User {
     /**
      * 是否删除：0-未删除，1-已删除
      */
-    @TableLogic
+    // @TableLogic  // 暂时注释掉，等数据库表添加字段后再启用
     @TableField("deleted")
     private Integer deleted;
+
+    /**
+     * 用户角色列表
+     */
+    @TableField(exist = false)
+    private List<Role> roles;
 
 }

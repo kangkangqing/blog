@@ -1,7 +1,6 @@
 package com.blog.controller;
-
-import com.blog.common.Result;
-import com.blog.entity.Blog;
+import com.blog.common.result.Result;
+import com.blog.entity.BlogArticle;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,7 +29,7 @@ public class BlogController {
             @ApiResponse(responseCode = "400", description = "参数错误")
     })
     @GetMapping("/list")
-    public Result<List<Blog>> getBlogList(
+    public Result<List<BlogArticle>> getBlogList(
             @Parameter(description = "页码", example = "1") @RequestParam(defaultValue = "1") Integer page,
             @Parameter(description = "每页大小", example = "10") @RequestParam(defaultValue = "10") Integer size,
             @Parameter(description = "分类ID", example = "1") @RequestParam(required = false) Long categoryId,
@@ -46,7 +45,7 @@ public class BlogController {
             @ApiResponse(responseCode = "404", description = "博客不存在")
     })
     @GetMapping("/{id}")
-    public Result<Blog> getBlogById(
+    public Result<BlogArticle> getBlogById(
             @Parameter(description = "博客ID", required = true, example = "1") @PathVariable Long id) {
         // TODO: 实现获取博客详情逻辑
         return Result.success("博客详情获取成功");
@@ -60,7 +59,7 @@ public class BlogController {
     })
     @SecurityRequirement(name = "Bearer Token")
     @PostMapping
-    public Result<Blog> createBlog(@Parameter(description = "博客信息") @Valid @RequestBody Blog blog) {
+    public Result<BlogArticle> createBlog(@Parameter(description = "博客信息") @Valid @RequestBody BlogArticle blog) {
         // TODO: 实现创建博客逻辑
         return Result.success("博客创建成功");
     }
@@ -74,9 +73,9 @@ public class BlogController {
     })
     @SecurityRequirement(name = "Bearer Token")
     @PutMapping("/{id}")
-    public Result<Blog> updateBlog(
+    public Result<BlogArticle> updateBlog(
             @Parameter(description = "博客ID", required = true) @PathVariable Long id,
-            @Parameter(description = "博客信息") @Valid @RequestBody Blog blog) {
+            @Parameter(description = "博客信息") @Valid @RequestBody BlogArticle article) {
         // TODO: 实现更新博客逻辑
         return Result.success("博客更新成功");
     }
@@ -97,7 +96,7 @@ public class BlogController {
 
     @Operation(summary = "获取热门博客", description = "获取浏览量最高的博客文章")
     @GetMapping("/hot")
-    public Result<List<Blog>> getHotBlogs(
+    public Result<List<BlogArticle>> getHotBlogs(
             @Parameter(description = "数量限制", example = "10") @RequestParam(defaultValue = "10") Integer limit) {
         // TODO: 实现获取热门博客逻辑
         return Result.success("热门博客获取成功");
@@ -105,7 +104,7 @@ public class BlogController {
 
     @Operation(summary = "获取推荐博客", description = "获取系统推荐的博客文章")
     @GetMapping("/recommend")
-    public Result<List<Blog>> getRecommendBlogs(
+    public Result<List<BlogArticle>> getRecommendBlogs(
             @Parameter(description = "数量限制", example = "5") @RequestParam(defaultValue = "5") Integer limit) {
         // TODO: 实现获取推荐博客逻辑
         return Result.success("推荐博客获取成功");

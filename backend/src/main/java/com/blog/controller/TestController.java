@@ -1,6 +1,5 @@
 package com.blog.controller;
-
-import com.blog.common.Result;
+import com.blog.common.result.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

@@ -13,6 +13,28 @@
 ### ✨ 核心特性
 
 - 🎨 **现代化UI设计** - 基于Element Plus的响应式界面
+- 🔒 **安全认证** - Sa-Token + JWT 双重安全保障
+- 📚 **完整文档** - SpringDoc OpenAPI 3.0 自动生成API文档
+- 🚀 **高性能** - Redis缓存 + MyBatis-Plus优化
+- 📱 **移动适配** - 完美支持移动端访问
+- 🛠️ **易部署** - Docker容器化部署支持
+- 📊 **数据统计** - 完整的访问日志和数据分析
+- 🎯 **SEO优化** - 搜索引擎友好的URL结构
+- 💬 **评论系统** - 支持嵌套回复的评论功能l Blog System)
+
+[![Java](https://img.shields.io/badge/Java-8-orange)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.15-brightgreen)](https://spring.io/projects/spring-boot)
+[![Vue](https://img.shields.io/badge/Vue-3.3.8-4fc08d)](https://vuejs.org/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)](https://www.mysql.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
+
+## 📋 项目概述
+
+这是一个基于 **Spring Boot + Vue3** 的现代化前后端分离个人博客系统，采用最新技术栈构建，具有完整的博客功能和管理后台。项目遵循RESTful API设计规范，支持响应式布局，适合个人开发者快速搭建专业的博客网站。
+
+### ✨ 核心特性
+
+- 🎨 **现代化UI设计** - 基于Element Plus的响应式界面
 - � **安全认证** - Sa-Token + JWT 双重安全保障
 - 📚 **完整文档** - SpringDoc OpenAPI 3.0 自动生成API文档
 - 🚀 **高性能** - Redis缓存 + MyBatis-Plus优化
